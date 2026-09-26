@@ -3,7 +3,9 @@ package com.vafin.SpringBootWebFirst;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -15,16 +17,12 @@ public class HomeController {
     }
 
     @RequestMapping("/add")
-    public String add(HttpServletRequest request, HttpSession session) {
-        System.out.println("HomeController.add()");
-        int num1 = Integer.parseInt(request.getParameter("num1"));
-        int num2 = Integer.parseInt(request.getParameter("num2"));
+    public String add(@RequestParam("num1") int num1, @RequestParam("num2") int num2, Model model) {
         int result = num1 + num2;
-        System.out.println(result);
-        session.setAttribute("num1", num1);
-        session.setAttribute("num2", num2);
-        session.setAttribute("result", result);
 
+        model.addAttribute("num1", num1);
+        model.addAttribute("num2", num2);
+        model.addAttribute("result", result);
 
         return "result.jsp";
     }
