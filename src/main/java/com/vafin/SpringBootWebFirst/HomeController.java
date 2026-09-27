@@ -10,6 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
+    @ModelAttribute("course")
+    public String courseName(){
+        return "Spring";
+    }
+
     @RequestMapping("/")
     public String home() {
         System.out.println("HomeController.home()");
