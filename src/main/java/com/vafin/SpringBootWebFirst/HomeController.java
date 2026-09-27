@@ -34,7 +34,7 @@ public class HomeController {
         return mv;
     }
 
-    @RequestMapping("addStudent")
+    @RequestMapping("/addStudent")
     public String add(Student student) {
         return "result";
     }
